@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { getAllTodos } from "./src/handlers/getAllTodos";
 import { addTodo } from "./src/handlers/addTodo";
+import Authrouter from "./src/auth/auth.router";
+import { isAuthenticated } from "./src/middlewares/isAuthenticated.middleware";
+import cookieParser from "cookie-parser";
 
 
 dotenv.config();
@@ -16,17 +19,25 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
+app.use(cookieParser());
+
+
 // ==>   APIs   <==
 
+app.use('/api/auth',Authrouter);
+app.get('/api/alltodos',isAuthenticated,getAllTodos)
+app.post('/api/addtodo',isAuthenticated,addTodo)
 
-app.get('/api/alltodos',getAllTodos)
-app.post('/api/addtodo',addTodo)
-
-// ==>   end of APIs   <==
-
-
+// ==>  end of APIs   <==
 
 
+
+
+
+app.use((err: any, req: Request, res: Response, next: any) => {
+    console.error(err.stack);
+    res.status(500).json({ message: err.message });
+});
 
 const PORT=process.env.PORT
 app.listen(PORT, () => {

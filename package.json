@@ -12,11 +12,19 @@
   "type": "commonjs",
   "dependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.9",
     "@types/dotenv": "^6.1.1",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^24.6.0",
-    "express-validator": "^7.2.1"
+    "@types/nodemailer": "^7.0.2",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.6"
   },
   "devDependencies": {
     "@types/express": "^5.0.3"

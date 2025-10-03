@@ -9,8 +9,7 @@ import { body } from "express-validator";
 interface IRequest{
         email: string;
         password: string;
-        username: string;
-        avatar?: string;
+        name: string;
     };
 
     interface IResponse{
@@ -25,19 +24,15 @@ interface IRequest{
     body("password")
         .isLength({ min: 6 })
         .withMessage("Password must be at least 6 characters"),
-    body("username")
+    body("name")
         .notEmpty()
-        .withMessage("Username is required")
+        .withMessage("name is required")
         .isLength({ min: 3, max: 20 })
-        .withMessage("Username must be between 3 and 20 characters"),
-    body("avatar")
-        .optional()
-        .isURL()
-        .withMessage("Avatar must be a valid URL"),
+        .withMessage("name must be between 3 and 20 characters"),
     ];
 
 export const registerHandler: RequestHandler<{}, IResponse, IRequest>= async (req, res) => {
-        const { email, password, username, avatar } = req.body;
+        const { email, password, name } = req.body;
         console.log("body is", req.body);
     
         const user = await User.findOne({ email });
@@ -48,12 +43,12 @@ export const registerHandler: RequestHandler<{}, IResponse, IRequest>= async (re
         }
     
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ email, password: hashedPassword, username, avatar });
+        const newUser = new User({ email, password: hashedPassword, name });
         await newUser.save();
         const token = jwtService.createToken({ id: newUser._id });
         console.log("token is", token);
     
-        await emailService.sendEmailVerificationLink(email, token);
+        // await emailService.sendEmailVerificationLink(email, token);
         console.log("email sent");
     
         res.json({

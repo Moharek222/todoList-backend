@@ -1,6 +1,5 @@
 import express from "express";
 import { registerHandler, registerValidation } from "./registerHandler";
-// import { verifyHandler } from "./verifyHandler";
 import { loginHandler, loginValidation } from "./loginHandler";
 import { logoutHandler } from "./logout";
 import { handleValidationErrors } from "../middlewares/handleValidationErrors";

@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import nodemailer from "nodemailer";
-import { MailOptions } from "nodemailer/lib/json-transport";
 import dotenv from "dotenv";
+import { MailOptions } from "nodemailer/lib/json-transport";
 
 dotenv.config();
 // Create a test account or replace with real credentials.

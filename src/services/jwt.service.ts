@@ -1,7 +1,7 @@
 import jwt, { SignOptions } from "jsonwebtoken";
 function createToken(
     payload: Record<string, unknown>,
-    options: SignOptions = { expiresIn: "1d" }
+    options: SignOptions = { expiresIn: "30d" }
 )
 {
     const token = jwt.sign(payload, process.env.secretKey!, options);
