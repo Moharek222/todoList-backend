@@ -12,7 +12,7 @@ type response={
     isCompleted:boolean
 }
 export const addTodo: RequestHandler<{}, response, request> = async (req, res) => {
-    const { title } = req.body;
+    const { title }  = req.body;
     const todo = await allTodos.create({ title });
     await todo.save();
     res.json({

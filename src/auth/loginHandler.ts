@@ -30,6 +30,7 @@ export const loginHandler: RequestHandler<{}, IResponse, IRequest> = async (req,
         res.status(400).json({ message: "Invalid password" });
         return;
     }
+
     const token = jwtService.createToken({
         id: user._id,
         email: user.email,

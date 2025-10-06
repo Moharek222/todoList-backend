@@ -5,6 +5,7 @@ interface IResponse{
 } 
 
 
+
 export const logoutHandler:RequestHandler<{},IResponse,{}>=async(req, res) => {
     res.clearCookie("token").json({ message: "Logout successful" });
 };

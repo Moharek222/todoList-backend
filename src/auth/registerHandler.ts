@@ -36,7 +36,7 @@ export const registerHandler: RequestHandler<{}, IResponse, IRequest>= async (re
         console.log("body is", req.body);
     
         const user = await User.findOne({ email });
-    
+
         if (user) {
             res.status(400).json({ message: "User already exists, please login" });
             return;

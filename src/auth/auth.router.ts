@@ -9,7 +9,7 @@ router.post("/register",
     registerValidation,
     handleValidationErrors,
     registerHandler
-);
+); 
 
 // router.get("/verify/:email/:token", verifyHandler);
 

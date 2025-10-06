@@ -14,7 +14,7 @@
 //         res.status(400).json({ message: "User not found" });
 //         return;
 //     }
-//     try {
+//     try {  
 //         jwt.verify(token, process.env.secretKey!);
 //         if (user.isEmailVerified) {
 //             res.status(400).json({ message: "email already verified" });
